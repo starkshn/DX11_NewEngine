@@ -22,24 +22,23 @@ void ConstantBufferDemo::Update()
 
 	if (INPUT->GetButton(KEY_TYPE::A))
 	{
-		_trnaslation.x -= 3.f * dt;
+		_translation.x -= 3.f * dt;
 	}
 	else if (INPUT->GetButton(KEY_TYPE::D))
 	{
-		_trnaslation.x += 3.f * dt;
+		_translation.x += 3.f * dt;
 	}
 	else if (INPUT->GetButton(KEY_TYPE::W))
 	{
-		_trnaslation.y += 3.f * dt;
+		_translation.y += 3.f * dt;
 	}
 	else if (INPUT->GetButton(KEY_TYPE::S))
 	{
-		_trnaslation.y -= 3.f * dt;
+		_translation.y -= 3.f * dt;
 	}
 
 	// SRT
-	_world = Matrix::CreateTranslation(_trnaslation);
-	
+	_world = Matrix::CreateTranslation(_translation);
 }
 
 void ConstantBufferDemo::Render()

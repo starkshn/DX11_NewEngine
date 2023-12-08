@@ -19,7 +19,7 @@ public:
 	shared_ptr<VertexBuffer> _vertexBuffer;
 	shared_ptr<IndexBuffer> _indexBuffer;
 
-	Vec3 _trnaslation = Vec3(0.f, 0.f, 0.f);
+	Vec3 _translation = Vec3(0.f, 0.f, 0.f);
 
 	Matrix _world = Matrix::Identity;
 	Matrix _view = Matrix::Identity;
