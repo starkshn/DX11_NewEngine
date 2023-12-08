@@ -6,7 +6,7 @@
 
 void CameraDemo::Init()
 {
-	_shader = make_shared<Shader>(L"04.World.fx");
+	_shader = make_shared<Shader>(L"03.ConstantBuffer.fx");
 
 	_geometry = make_shared<Geometry<VertexColorData>>();
 	GeometryHelper::CreateQuad(_geometry, Color(1, 0, 0, 1.f));

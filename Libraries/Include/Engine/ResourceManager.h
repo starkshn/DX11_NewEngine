@@ -6,6 +6,8 @@ class Shader;
 class Texture;
 class Mesh;
 
+#define PATH_MAX_LENGTH 1024
+
 class ResourceManager
 {
 	DECLARE_SINGLE(ResourceManager);
@@ -24,11 +26,31 @@ public:
 	template<typename T>
 	ResourceType GetResourceType();
 
+public:
+	const wstring GetAbsolutePath(wstring textureName)
+	{
+		if (_absolutePath != L"") return _absolutePath + textureName;
+
+		wchar_t path[PATH_MAX_LENGTH] = {};
+		GetModuleFileName(NULL, path, PATH_MAX_LENGTH);
+		_absolutePath = wstring(path);
+
+		auto pos = _absolutePath.find(L"Binaries\\");
+
+		wstring subPath = _absolutePath.substr(0, pos);
+		subPath += L"Resources\\Texture\\";
+
+		_absolutePath = subPath;
+
+		return _absolutePath + textureName;
+	}
+
 private:
 	void CreateDefaultMesh();
 
 private:
 	wstring _resourcePath;
+	wstring _absolutePath; // 내가 추가한거
 
 private:
 	using KeyObjMap = map<wstring/*key*/, shared_ptr<ResourceBase>>;
