@@ -10,7 +10,12 @@ void TextureDemo::Init()
 
 	// Object
 	_geometry = make_shared<Geometry<VertexTextureData>>();
-	GeometryHelper::CreateQuad(_geometry);
+
+	// GeometryHelper::CreateQuad(_geometry);
+	// GeometryHelper::CreateCube(_geometry);
+	// GeometryHelper::CreateSphere(_geometry);
+	GeometryHelper::CreateGrid(_geometry, 256, 256);
+
 	_vertexBuffer = make_shared<VertexBuffer>();
 	_vertexBuffer->Create(_geometry->GetVertices());
 	_indexBuffer = make_shared<IndexBuffer>();
@@ -43,6 +48,9 @@ void TextureDemo::Render()
 	_shader->GetMatrix("View")->SetMatrix((float*)&Camera::S_MatView);
 	_shader->GetMatrix("Projection")->SetMatrix((float*)&Camera::S_MatProjection);
 
+	// Shader의 Textur0과 연결
+	_shader->GetSRV("Texture0")->SetResource(_texture->GetComPtr().Get());
+
 	uint32 stride = _vertexBuffer->GetStride();
 	uint32 offset = _vertexBuffer->GetOffset();
 
@@ -50,7 +58,4 @@ void TextureDemo::Render()
 	DC->IASetIndexBuffer(_indexBuffer->GetComPtr().Get(), DXGI_FORMAT_R32_UINT, 0);
 
 	_shader->DrawIndexed(0, 0, _indexBuffer->GetCount(), 0, 0);
-
-	// Shader의 Textur0과 연결
-	_shader->GetSRV("Texture0")->SetResource(_texture->GetComPtr().Get());
 }
