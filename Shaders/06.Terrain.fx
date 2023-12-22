@@ -2,6 +2,7 @@ matrix World;
 matrix View;
 matrix Projection;
 Texture2D Texture0;
+Texture2D Texture1;
 uint Address;
 
 struct VertexInput

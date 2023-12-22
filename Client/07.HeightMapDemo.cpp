@@ -66,8 +66,6 @@ void HeightMapDemo::Init()
 
 	_camera->GetTransform()->SetPosition(Vec3(25.f, 5.f, -2.f));
 	_camera->GetTransform()->SetRotation(Vec3(25.f, 0.f, 0.f));
-
-
 }
 
 void HeightMapDemo::Update()
